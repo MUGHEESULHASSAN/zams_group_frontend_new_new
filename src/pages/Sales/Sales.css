@@ -1,0 +1,152 @@
+/* General Styles */
+.sales-page {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.filter-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.filter-select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Table Container: Make it scrollable horizontally */
+.table-container {
+  max-height: 500px; /* Adjust as needed */
+  overflow-x: auto;  /* Enable horizontal scrolling */
+  margin-top: 20px;
+  border: 1px solid #ddd; /* Optional: Add border for clarity */
+  border-radius: 8px;  /* Optional: Rounded corners for the table */
+}
+
+/* Table Styling: Set the width of the table and ensure it doesn't overflow */
+table {
+  /* This is the key change: set a min-width to ensure the table can overflow its container */
+  min-width: 800px; /* Adjust this value as needed based on your content */
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;  /* Add a separator between rows */
+  white-space: nowrap; /* Prevents text from wrapping and ensures columns have their intended width */
+  
+  /* Add explicit column width to force table overflow */
+  width: 150px; /* Example value. Adjust based on your number of columns */
+}
+
+/* Status badge styles */
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.status-badge.active {
+  background-color: #28a745;
+  color: white;
+}
+
+.status-badge.inactive {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Optional: Styling for the column toggle controls */
+.column-toggle {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+}
+
+.column-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.column-options div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.column-options input {
+  margin-right: 5px;
+}
+
+.column-options label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+}
+
+/* Filter Button */
+.filter-button-container {
+  position: relative;
+}
+
+.filter-btn {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.filter-btn:hover {
+  background-color: #0056b3;
+}
+
+.filter-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  width: 200px;
+}
+
+.filter-dropdown div {
+  margin-bottom: 10px;
+}
+
+.filter-dropdown label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.filter-dropdown input {
+  margin-right: 8px;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;   /* Enables horizontal scroll */
+  -webkit-overflow-scrolling: touch; /* Smooth scroll on mobile */
+}
+
+.table-container table {
+  min-width: 1000px; /* Force table to expand horizontally */
+  border-collapse: collapse;
+}
