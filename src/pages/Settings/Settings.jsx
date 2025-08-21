@@ -2,10 +2,12 @@
 
 import { useState } from "react"
 import SearchBar from "../../components/Common/SearchBar"
+import SystemPreferences from "../../components/SystemPreferences"
 import "./Settings.css"
 
 const Settings = () => {
   const [searchTerm, setSearchTerm] = useState("")
+  const [currentView, setCurrentView] = useState("main")
 
   const settingsCategories = [
     {
@@ -51,7 +53,19 @@ const Settings = () => {
   ]
 
   const handleSettingClick = (settingName) => {
-    alert(`Opening ${settingName} configuration...`)
+    if (settingName === "System Preferences") {
+      setCurrentView("system-preferences")
+    } else {
+      alert(`Opening ${settingName} configuration...`)
+    }
+  }
+
+  const handleBackToMain = () => {
+    setCurrentView("main")
+  }
+
+  if (currentView === "system-preferences") {
+    return <SystemPreferences onBack={handleBackToMain} />
   }
 
   return (
@@ -78,7 +92,7 @@ const Settings = () => {
                     <h3 className="setting-name">{setting.name}</h3>
                     <p className="setting-description">{setting.description}</p>
                   </div>
-                  <div className="setting-arrow">›</div>
+                  <div className="setting-arrow"></div>
                 </div>
               ))}
             </div>
