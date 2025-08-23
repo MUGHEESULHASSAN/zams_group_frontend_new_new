@@ -11,6 +11,7 @@ import "../../pages/Inventory/Settings/UnitTypeManagement"
 import "../../pages/Sales/CustomerCategoryManagement"
 import "../../pages/Sales/SalesReports"
 import "../../pages/Purchasing/PurchasingReports"
+import path from "path"
 
 
 
@@ -82,6 +83,9 @@ const Sidebar = ({ isOpen }) => {
       submenu: [
         { path: "/finance", label: "Transactions" },
         { path: "/invoices", label: "Invoices" },
+        { path: "/expense-entry", label: "Expense Entry" },
+        { path: "/journal-entry", label: "Journal Entry" },
+        { path: "/finance-reports", label: "Finance Reports" }
       ],
     },
     { path: "/reports", label: "Reports", icon: "📊" },

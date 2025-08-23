@@ -1,0 +1,208 @@
+.account-ledger {
+  padding: 20px;
+  color: #1a1a1a; /* Using direct dark color instead of CSS variable */
+  min-height: 100vh;
+}
+
+/* Top Controls */
+.ledger-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.control-label {
+  font-weight: 500;
+  color: #1a1a1a; /* Using direct dark color for better visibility */
+  white-space: nowrap;
+}
+
+.account-select,
+.date-range-select {
+  padding: 8px 12px;
+  border: 1px solid #d1d5db; /* Using direct border color */
+  border-radius: 6px;
+  background-color: #ffffff; /* White background for form controls */
+  color: #1a1a1a; /* Dark text color */
+  font-size: 14px;
+  min-width: 150px;
+  cursor: pointer;
+}
+
+.account-select:focus,
+.date-range-select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  padding: 8px;
+  border: 1px solid #d1d5db; /* Direct border color */
+  border-radius: 6px;
+  background-color: #ffffff; /* White background for buttons */
+  color: #1a1a1a; /* Dark text color */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn:hover {
+  background-color: #f8fafc;
+  border-color: #3b82f6;
+}
+
+.action-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+/* Company Header */
+.company-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.company-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a; /* Dark color for company name */
+  margin: 0 0 8px 0;
+  letter-spacing: 0.5px;
+}
+
+.report-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a; /* Dark color for report title */
+  margin: 0 0 16px 0;
+}
+
+.date-range {
+  font-size: 14px;
+  color: #4b5563; /* Medium gray for date range, still readable */
+  margin: 0;
+}
+
+/* Ledger Table */
+.ledger-table-container {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #d1d5db; /* Direct border color */
+  background-color: #ffffff; /* White background for table container */
+}
+
+.ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background-color: #ffffff; /* White background for table */
+}
+
+.table-header {
+  background-color: #f8f9fa;
+}
+
+.table-header th {
+  padding: 16px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #1a1a1a; /* Dark color for table headers */
+  border-bottom: 1px solid #d1d5db; /* Direct border color */
+}
+
+.table-row {
+  border-bottom: 1px solid #d1d5db; /* Direct border color */
+  background-color: #ffffff; /* White background for table rows */
+}
+
+.table-row:hover {
+  background-color: #f8fafc;
+}
+
+.table-row td {
+  padding: 12px;
+  color: #1a1a1a; /* Dark color for table data */
+}
+
+.no-data {
+  text-align: center;
+  padding: 40px 12px;
+  color: #6b7280; /* Medium gray for no data message, still readable */
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .account-ledger {
+    padding: 16px;
+  }
+
+  .ledger-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .control-group {
+    justify-content: space-between;
+  }
+
+  .action-buttons {
+    justify-content: center;
+  }
+
+  .company-name {
+    font-size: 20px;
+  }
+
+  .report-title {
+    font-size: 18px;
+  }
+
+  .ledger-table-container {
+    overflow-x: auto;
+  }
+
+  .ledger-table {
+    min-width: 600px;
+  }
+
+  .table-header th,
+  .table-row td {
+    padding: 8px;
+    font-size: 12px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .account-ledger {
+    --background: #0f172a;
+    --foreground: #f8fafc;
+    --card: #1e293b;
+    --border: #334155;
+    --muted: #1e293b;
+    --muted-foreground: #94a3b8;
+    --primary: #3b82f6;
+  }
+
+  .table-header {
+    background-color: #1e293b;
+  }
+}

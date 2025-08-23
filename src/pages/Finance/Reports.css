@@ -1,0 +1,106 @@
+/* Reports Component Styles */
+.reports-container {
+  padding: 1.5rem;
+  background-color: var(--background);
+  min-height: 100vh;
+}
+
+.reports-header {
+  margin-bottom: 1.5rem;
+}
+
+.reports-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0;
+  letter-spacing: -0.025em;
+}
+
+.reports-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .reports-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.report-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.report-card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid black;
+  transform: translateY(-1px);
+  border-color: var(--primary);
+}
+
+.report-card:active {
+  transform: translateY(0);
+}
+
+.report-card-title {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--card-foreground);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+.report-card-description {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Focus styles for accessibility */
+.report-card:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .report-card {
+    background-color: var(--card);
+    border-color: var(--border);
+  }
+
+  .report-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .reports-container {
+    padding: 1rem;
+  }
+
+  .reports-title {
+    font-size: 1.75rem;
+  }
+
+  .reports-grid {
+    gap: 1rem;
+  }
+
+  .report-card {
+    padding: 1.25rem;
+  }
+}

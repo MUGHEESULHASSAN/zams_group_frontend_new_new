@@ -41,6 +41,9 @@ import PurchasingReport from "./pages/Purchasing/PurchasingReports" // Import Pu
 import PurchaseOrderByCustomer from "./pages/Purchasing/PurchaseOrderByCustomer"
 import PurchaseOrderByItems from "./pages/Purchasing/PurchaseOrderByItems"
 import PurchaseOrderByMonth from "./pages/Purchasing/PurchaseOrderByMonth"
+import ExpensEntry from "./pages/Finance/ExpenseEntry"
+import JournalEntry from "./pages/Finance/JournalEntry"
+import FinanceReports from "./pages/Finance/Reports"
 
 
 
@@ -79,6 +82,9 @@ function App() {
                     <Route path="/leave" element={<LeaveManagement />} />
                     <Route path="/finance" element={<Finance />} />
                     <Route path="/invoices" element={<Invoices />} />
+                    <Route path="/expense-entry" element={<ExpensEntry />} />
+                    <Route path="/journal-entry" element={<JournalEntry />} />
+                    <Route path="/finance-reports" element={<FinanceReports />} />
                     <Route path="/reports" element={<Reports />} />
                     <Route path="/calendar" element={<Calendar />} />
                     <Route path="/settings" element={<Settings />} />
