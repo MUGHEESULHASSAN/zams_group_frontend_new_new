@@ -3,10 +3,40 @@
   padding: 1.5rem;
   background-color: var(--background);
   min-height: 100vh;
+  width: 100%;
 }
 
 .reports-header {
   margin-bottom: 1.5rem;
+}
+
+.back-button{
+  background: rgb(101, 101, 230);
+  border: 1px solid rgb(101, 101, 230);
+  padding: 10px 15px;
+  color: var(--primary);
+  border-radius: 12px;
+  &:hover {
+    background: darken(rgb(101, 101, 230), 5%);
+  }
+  cursor: pointer;
+  font-size: 1rem;
+  color: #fdfdfd;
+  margin: 12px 0;
+}
+
+.animated-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.arrow-icon {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.animated-arrow:hover {
+  transform: translateX(-2px);
 }
 
 .reports-title {
@@ -21,7 +51,6 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  max-width: 64rem;
   margin: 0 auto;
 }
 

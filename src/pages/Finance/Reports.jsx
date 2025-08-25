@@ -49,16 +49,19 @@ const Reports = () => {
   if (currentView === "account-ledger") {
     return (
       <div>
-        <button className="back-button" onClick={() => setCurrentView("reports")}>
-          ← Back to Reports
+        <button className="back-button animated-arrow" onClick={() => setCurrentView("reports")}>
+          <span className="arrow-icon">&#8592;</span> Back to Reports
         </button>
         <AccountLedger />
       </div>
     )
   }
-  else if(currentView === "chart-of-accounts") {
+  else if (currentView === "chart-of-accounts") {
     return (
       <div>
+        <button className="back-button animated-arrow" onClick={() => setCurrentView("reports")}>
+          <span className="arrow-icon">&#8592;</span> Back to Reports
+        </button>
         <ChartOfAccounts />
       </div>
     )
