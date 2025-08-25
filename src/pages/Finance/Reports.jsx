@@ -2,6 +2,7 @@
 import { useState } from "react"
 import "./Reports.css"
 import AccountLedger from "./AccountLedger"
+import ChartOfAccounts from "./ChartOfAccounts"
 
 const Reports = () => {
   const [currentView, setCurrentView] = useState("reports")
@@ -37,6 +38,12 @@ const Reports = () => {
       description: "Click to view details",
       onClick: () => console.log("Navigate to Cash/Bank Summary"),
     },
+    {
+      id: "chart-of-accounts",
+      title: "Chart of Accounts",
+      description: "Click to view details",
+      onClick: () => setCurrentView("chart-of-accounts"),
+    },
   ]
 
   if (currentView === "account-ledger") {
@@ -46,6 +53,13 @@ const Reports = () => {
           ← Back to Reports
         </button>
         <AccountLedger />
+      </div>
+    )
+  }
+  else if(currentView === "chart-of-accounts") {
+    return (
+      <div>
+        <ChartOfAccounts />
       </div>
     )
   }
