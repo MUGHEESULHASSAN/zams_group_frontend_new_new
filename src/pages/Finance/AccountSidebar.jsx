@@ -7,46 +7,53 @@ const AccountSidebar = () => {
   const [expandedItems, setExpandedItems] = useState({
     asset: false,
     currentAsset: false,
-    fixedAsset: false,
+    cashAndCashEquivalents: false,
     accountsReceivable: false,
-    cashInHand: false,
-    bank: false,
-    inventoryInHand: false,
-    advancesLoan: false,
-    taxReceivable: false,
-    landBuilding: false,
-    plantMachinery: false,
-    furnitureFix: false,
-    officeEquipment: false,
-    vehicles: false,
+    inventory: false,
+    prepaidExpenses: false,
+    otherCurrentAssets: false,
+    nonCurrentAssets: false,
+    propertyPlantEquipment: false,
+    intangibleAssets: false,
+    longTermInvestments: false,
+    otherNonCurrentAssets: false,
     liability: false,
-    currentLiability: false,
+    currentLiabilities: false,
     accountsPayable: false,
-    taxPayables: false,
-    outwardClearing: false,
-    longTermLiability: false,
+    shortTermBorrowings: false,
+    accruedExpenses: false,
+    taxesPayable: false,
+    otherCurrentLiabilities: false,
+    nonCurrentLiabilities: false,
+    longTermDebt: false,
+    deferredTaxLiabilities: false,
+    employeeBenefits: false,
+    otherNonCurrentLiabilities: false,
     equity: false,
-    openingBalances: false,
-    paidUpCapital: false,
+    shareCapital: false,
+    reserves: false,
     retainedEarnings: false,
+    otherEquity: false,
     revenue: false,
-    income: false,
-    localSale: false,
-    exportSale: false,
-    otherIncomes: false,
+    operatingRevenue: false,
+    salesRevenue: false,
+    serviceRevenue: false,
     otherIncome: false,
-    expense: false,
+    financialIncome: false,
+    miscellaneousIncome: false,
     costOfGoodsSold: false,
-    inventoryCost: false,
-    conversionCost: false,
-    financialExpense: false,
+    directCosts: false,
+    rawMaterialsCost: false,
+    directLabor: false,
+    directExpenses: false,
+    manufacturingOverheads: false,
+    operatingExpenses: false,
+    sellingExpenses: false,
+    administrativeExpenses: false,
+    otherAccounts: false,
     financialExpenses: false,
-    factoryOverHeads: false,
-    administrativeExpense: false,
-    sellingExpense: false,
-    depreciationExpenses: false,
-    gainLossAccount: false,
-    landedCost: false,
+    extraordinaryItems: false,
+    taxExpenses: false,
   })
 
   const toggleExpanded = (item) => {
@@ -59,324 +66,421 @@ const AccountSidebar = () => {
   const accountData = {
     asset: {
       name: "ASSET",
+      code: "1000",
       children: {
         currentAsset: {
           name: "CURRENT ASSET",
+          code: "1100",
           children: {
+            cashAndCashEquivalents: {
+              name: "CASH AND CASH EQUIVALENTS",
+              code: "1110",
+              children: {
+                cashInHand: { name: "CASH IN HAND", code: "1111" },
+                cashAtBank: { name: "CASH AT BANK", code: "1112" },
+                shortTermInvestments: { name: "SHORT TERM INVESTMENTS", code: "1113" },
+              },
+            },
             accountsReceivable: {
               name: "ACCOUNTS RECEIVABLE",
+              code: "1120",
               children: {
-                interCompanyAsset: { name: "INTER COMPANY ASSET" },
-                assetAccount: { name: "ASSET ACCOUNT" },
-                cashReceivable: { name: "CASH & CASH RECEIVABLE" },
+                tradeDebtors: { name: "TRADE DEBTORS", code: "1121" },
+                allowanceForDoubtfulDebts: { name: "ALLOWANCE FOR DOUBTFUL DEBTS", code: "1122" },
+                advancesToSuppliers: { name: "ADVANCES TO SUPPLIERS", code: "1123" },
+                advancesToEmployees: { name: "ADVANCES TO EMPLOYEES", code: "1124" },
+                otherReceivables: { name: "OTHER RECEIVABLES", code: "1125" },
               },
             },
-            cashInHand: {
-              name: "CASH IN HAND",
+            inventory: {
+              name: "INVENTORY",
+              code: "1130",
               children: {
-                cashInHandMain: { name: "CASH IN HAND MAIN" },
-                pettyCash: { name: "PETTY CASH ACCOUNT" },
+                rawMaterials: { name: "RAW MATERIALS", code: "1131" },
+                workInProgress: { name: "WORK IN PROGRESS", code: "1132" },
+                finishedGoods: { name: "FINISHED GOODS", code: "1133" },
+                tradingStock: { name: "TRADING STOCK", code: "1134" },
+                consumableStores: { name: "CONSUMABLE STORES", code: "1135" },
               },
             },
-            selfCash: { name: "SELF CASH" },
-            bank: {
-              name: "BANK",
+            prepaidExpenses: {
+              name: "PREPAID EXPENSES",
+              code: "1140",
               children: {
-                inwardClearing: { name: "INWARD CLEARING CHEQUE" },
-                meezanBank: { name: "MEEZAN BANK" },
-                hblAccount: { name: "HBL ACCOUNT" },
-                ublBank: { name: "UBL BANK" },
-                alliedBank: { name: "ALLIED BANK" },
-                selfBank: { name: "SELF BANK" },
+                prepaidRent: { name: "PREPAID RENT", code: "1141" },
+                prepaidInsurance: { name: "PREPAID INSURANCE", code: "1142" },
+                prepaidUtilities: { name: "PREPAID UTILITIES", code: "1143" },
+                otherPrepaidExpenses: { name: "OTHER PREPAID EXPENSES", code: "1144" },
               },
             },
-            inventoryInHand: {
-              name: "INVENTORY IN HAND",
+            otherCurrentAssets: {
+              name: "OTHER CURRENT ASSETS",
+              code: "1150",
               children: {
-                rawMaterial: { name: "RAW MATERIAL STOCK" },
-                wipStock: { name: "W.I.P STOCK" },
-                finishedGoods: { name: "FINISHED GOODS STOCK" },
-                looseTools: { name: "LOOSE TOOLS" },
-              },
-            },
-            advancesLoan: {
-              name: "ADVANCES & LOAN",
-              children: {
-                securityDeposit: { name: "SECURITY DEPOSIT" },
-                advanceToEmployees: { name: "ADVANCE TO EMPLOYEES" },
-                loanToEmployees: { name: "LOAN TO EMPLOYEES" },
-                vendorAdvances: { name: "VENDOR ADVANCES" },
-                longTermLoans: { name: "LONG TERM LOANS" },
-              },
-            },
-            taxReceivable: {
-              name: "TAX RECEIVABLE",
-              children: {
-                whtReceivable: { name: "WHT RECEIVABLE ACCOUNT" },
-                withholdingTax: { name: "WITHHOLDING TAX RECEIVABLE" },
-                gstPurchases: { name: "GST ON PURCHASES" },
-                vatPurchase: { name: "VAT ON PURCHASE" },
+                taxRefundsDue: { name: "TAX REFUNDS DUE", code: "1151" },
+                accrualReceivables: { name: "ACCRUAL RECEIVABLES", code: "1152" },
+                miscCurrentAssets: { name: "MISCELLANEOUS CURRENT ASSETS", code: "1153" },
               },
             },
           },
         },
-        fixedAsset: {
-          name: "FIXED ASSET",
+        nonCurrentAssets: {
+          name: "NON-CURRENT ASSETS",
+          code: "1200",
           children: {
-            landBuilding: {
-              name: "LAND & BUILDING",
+            propertyPlantEquipment: {
+              name: "PROPERTY, PLANT & EQUIPMENT",
+              code: "1210",
               children: {
-                landBuilding: { name: "LAND & BUILDING" },
-                officeProperty: { name: "OFFICE PROPERTY" },
+                land: { name: "LAND", code: "1211" },
+                buildings: { name: "BUILDINGS", code: "1212" },
+                plantAndMachinery: { name: "PLANT AND MACHINERY", code: "1213" },
+                furnitureAndFixtures: { name: "FURNITURE AND FIXTURES", code: "1214" },
+                officeEquipment: { name: "OFFICE EQUIPMENT", code: "1215" },
+                motorVehicles: { name: "MOTOR VEHICLES", code: "1216" },
+                accumulatedDepreciation: { name: "ACCUMULATED DEPRECIATION", code: "1217" },
               },
             },
-            plantMachinery: {
-              name: "PLANT & MACHINERY",
+            intangibleAssets: {
+              name: "INTANGIBLE ASSETS",
+              code: "1220",
               children: {
-                utilityMachinery: { name: "UTILITY MACHINERY" },
-                generalMachinery: { name: "GENERAL MACHINERY" },
-                electricMachines: { name: "ELECTRIC & OTHERS MACHINES" },
+                goodwill: { name: "GOODWILL", code: "1221" },
+                patents: { name: "PATENTS", code: "1222" },
+                trademarks: { name: "TRADEMARKS", code: "1223" },
+                software: { name: "SOFTWARE", code: "1224" },
+                accumulatedAmortization: { name: "ACCUMULATED AMORTIZATION", code: "1225" },
               },
             },
-            furnitureFix: {
-              name: "FURNITURE & FIXTURE",
+            longTermInvestments: {
+              name: "LONG TERM INVESTMENTS",
+              code: "1230",
               children: {
-                officeTables: { name: "OFFICE TABLES" },
-                officeChairs: { name: "OFFICE CHAIRS" },
-                officeFurniture: { name: "OFFICE FURNITURE" },
+                investmentInSubsidiaries: { name: "INVESTMENT IN SUBSIDIARIES", code: "1231" },
+                investmentInAssociates: { name: "INVESTMENT IN ASSOCIATES", code: "1232" },
+                longTermSecurities: { name: "LONG TERM SECURITIES", code: "1233" },
               },
             },
-            officeEquipment: {
-              name: "OFFICE EQUIPMENT",
+            otherNonCurrentAssets: {
+              name: "OTHER NON-CURRENT ASSETS",
+              code: "1240",
               children: {
-                laptops: { name: "LAPTOPS" },
-                computerAcc: { name: "COMPUTER & ACCESSORIES" },
-                airConditioner: { name: "AIR CONDITIONER" },
-                electricalEquip: { name: "ELECTRICAL EQUIPMENTS" },
+                longTermLoansAndAdvances: { name: "LONG TERM LOANS AND ADVANCES", code: "1241" },
+                deferredTaxAssets: { name: "DEFERRED TAX ASSETS", code: "1242" },
+                capitalWorkInProgress: { name: "CAPITAL WORK IN PROGRESS", code: "1243" },
               },
             },
-            vehicles: {
-              name: "VEHICLES",
-              children: {
-                motorCars: { name: "MOTOR CARS" },
-                motorCycles: { name: "MOTOR CYCLES" },
-                factoryVehicles: { name: "FACTORY VEHICLES" },
-              },
-            },
-            accumulatedDep: { name: "ACCUMULATED DEPRECIATION" },
           },
         },
       },
     },
     liability: {
       name: "LIABILITY",
+      code: "2000",
       children: {
-        currentLiability: {
-          name: "CURRENT LIABILITY",
+        currentLiabilities: {
+          name: "CURRENT LIABILITIES",
+          code: "2100",
           children: {
             accountsPayable: {
               name: "ACCOUNTS PAYABLE",
+              code: "2110",
               children: {
-                unbilledPayable: { name: "UNBILLED PAYABLE" },
-                interCompanyPayable: { name: "INTER COMPANY PAYABLE ACCOUNT" },
-                employeeReimbursement: { name: "EMPLOYEE REIMBURSEMENT PAYABLE" },
-                supplierPayable: { name: "SUPPLIER PAYABLE" },
-                advanceReceived: { name: "ADVANCE RECEIVED FROM CUSTOMERS" },
-                employeeSalary: { name: "EMPLOYEE SALARY PAYABLE" },
-                fohApplied: { name: "FOH APPLIED PAYABLE" },
+                tradeCreditors: { name: "TRADE CREDITORS", code: "2111" },
+                billsPayable: { name: "BILLS PAYABLE", code: "2112" },
+                accrualPayables: { name: "ACCRUAL PAYABLES", code: "2113" },
+                advancesFromCustomers: { name: "ADVANCES FROM CUSTOMERS", code: "2114" },
               },
             },
-            taxPayables: {
-              name: "TAX PAYABLES",
+            shortTermBorrowings: {
+              name: "SHORT TERM BORROWINGS",
+              code: "2120",
               children: {
-                furtherTaxPayable: { name: "FURTHER TAX PAYABLE" },
-                advanceIncomeTax: { name: "ADVANCE INCOME TAX PAYABLE" },
-                incomeTaxProfit: { name: "INCOME TAX ON PROFIT OF COMPANY" },
-                gstSales: { name: "GST ON SALES" },
-                vatSales: { name: "VAT ON SALES" },
-                whtPayable: { name: "WHT PAYABLE ACCOUNT" },
+                bankOverdraft: { name: "BANK OVERDRAFT", code: "2121" },
+                shortTermLoans: { name: "SHORT TERM LOANS", code: "2122" },
+                currentPortionLongTermDebt: { name: "CURRENT PORTION OF LONG TERM DEBT", code: "2123" },
               },
             },
-            outwardClearing: {
-              name: "OUTWARD CLEARING CHEQUES",
+            accruedExpenses: {
+              name: "ACCRUED EXPENSES",
+              code: "2130",
               children: {
-                outwardClearingCheque: { name: "OUTWARD CLEARING CHEQUE" },
+                salariesAndWagesPayable: { name: "SALARIES AND WAGES PAYABLE", code: "2131" },
+                interestPayable: { name: "INTEREST PAYABLE", code: "2132" },
+                utilitiesPayable: { name: "UTILITIES PAYABLE", code: "2133" },
+                rentPayable: { name: "RENT PAYABLE", code: "2134" },
+              },
+            },
+            taxesPayable: {
+              name: "TAXES PAYABLE",
+              code: "2140",
+              children: {
+                incomeTaxPayable: { name: "INCOME TAX PAYABLE", code: "2141" },
+                salesTaxPayable: { name: "SALES TAX PAYABLE", code: "2142" },
+                withholdingTaxPayable: { name: "WITHHOLDING TAX PAYABLE", code: "2143" },
+                providentFundPayable: { name: "PROVIDENT FUND PAYABLE", code: "2144" },
+              },
+            },
+            otherCurrentLiabilities: {
+              name: "OTHER CURRENT LIABILITIES",
+              code: "2150",
+              children: {
+                dividendsPayable: { name: "DIVIDENDS PAYABLE", code: "2151" },
+                provisionsForWarranties: { name: "PROVISIONS FOR WARRANTIES", code: "2152" },
+                miscCurrentLiabilities: { name: "MISCELLANEOUS CURRENT LIABILITIES", code: "2153" },
               },
             },
           },
         },
-        longTermLiability: {
-          name: "LONG TERM LIABILITY",
+        nonCurrentLiabilities: {
+          name: "NON-CURRENT LIABILITIES",
+          code: "2200",
           children: {
-            longTermLiabilities: { name: "LONG TERM LIABILITIES" },
+            longTermDebt: {
+              name: "LONG TERM DEBT",
+              code: "2210",
+              children: {
+                longTermBankLoans: { name: "LONG TERM BANK LOANS", code: "2211" },
+                bonds: { name: "BONDS", code: "2212" },
+                mortgagePayable: { name: "MORTGAGE PAYABLE", code: "2213" },
+              },
+            },
+            deferredTaxLiabilities: {
+              name: "DEFERRED TAX LIABILITIES",
+              code: "2220",
+              children: {
+                deferredTaxLiability: { name: "DEFERRED TAX LIABILITY", code: "2221" },
+              },
+            },
+            employeeBenefits: {
+              name: "EMPLOYEE BENEFITS",
+              code: "2230",
+              children: {
+                gratuityPayable: { name: "GRATUITY PAYABLE", code: "2231" },
+                pensionObligations: { name: "PENSION OBLIGATIONS", code: "2232" },
+              },
+            },
+            otherNonCurrentLiabilities: {
+              name: "OTHER NON-CURRENT LIABILITIES",
+              code: "2240",
+              children: {
+                longTermProvisions: { name: "LONG TERM PROVISIONS", code: "2241" },
+                miscNonCurrentLiabilities: { name: "MISCELLANEOUS NON-CURRENT LIABILITIES", code: "2242" },
+              },
+            },
           },
         },
       },
     },
     equity: {
-      name: "STOCKHOLDER EQUITY",
+      name: "EQUITY",
+      code: "3000",
       children: {
-        openingBalances: {
-          name: "OPENING BALANCES EQUITY",
+        shareCapital: {
+          name: "SHARE CAPITAL",
+          code: "3100",
           children: {
-            openingStock: { name: "OPENING STOCK" },
-            openingSupplierPayables: { name: "OPENING SUPPLIER PAYABLES" },
-            openingCustomersReceivable: { name: "OPENING CUSTOMERS RECEIVABLE" },
-            openingCash: { name: "OPENING CASH" },
-            drawings: { name: "DRAWINGS" },
-            openingFixedAssets: { name: "OPENING FIXED ASSETS" },
+            authorizedCapital: { name: "AUTHORIZED CAPITAL", code: "3101" },
+            issuedCapital: { name: "ISSUED CAPITAL", code: "3102" },
+            paidUpCapital: { name: "PAID UP CAPITAL", code: "3103" },
           },
         },
-        paidUpCapital: {
-          name: "PAID UP CAPITAL",
+        reserves: {
+          name: "RESERVES",
+          code: "3200",
           children: {
-            openingPaidUpCapital: { name: "OPENING PAID UP CAPITAL" },
-            parkingAccount: { name: "PARKING ACCOUNT" },
+            capitalReserves: { name: "CAPITAL RESERVES", code: "3201" },
+            revenueReserves: { name: "REVENUE RESERVES", code: "3202" },
+            generalReserves: { name: "GENERAL RESERVES", code: "3203" },
           },
         },
         retainedEarnings: {
           name: "RETAINED EARNINGS",
+          code: "3300",
           children: {
-            retainedEarning: { name: "RETAINED EARNING" },
+            unappropriatedProfit: { name: "UNAPPROPRIATED PROFIT", code: "3301" },
+            accumulatedLosses: { name: "ACCUMULATED LOSSES", code: "3302" },
+          },
+        },
+        otherEquity: {
+          name: "OTHER EQUITY",
+          code: "3400",
+          children: {
+            treasuryShares: { name: "TREASURY SHARES", code: "3401" },
+            foreignCurrencyTranslation: { name: "FOREIGN CURRENCY TRANSLATION RESERVE", code: "3402" },
           },
         },
       },
     },
     revenue: {
       name: "REVENUE",
+      code: "4000",
       children: {
-        income: {
-          name: "INCOME",
+        operatingRevenue: {
+          name: "OPERATING REVENUE",
+          code: "4100",
           children: {
-            localSale: {
-              name: "LOCAL SALE",
+            salesRevenue: {
+              name: "SALES REVENUE",
+              code: "4110",
               children: {
-                localSales: { name: "LOCAL SALES" },
+                localSales: { name: "LOCAL SALES", code: "4111" },
+                exportSales: { name: "EXPORT SALES", code: "4112" },
+                salesReturns: { name: "SALES RETURNS", code: "4113" },
+                salesDiscounts: { name: "SALES DISCOUNTS", code: "4114" },
               },
             },
-            exportSale: {
-              name: "EXPORT SALE",
+            serviceRevenue: {
+              name: "SERVICE REVENUE",
+              code: "4120",
               children: {
-                exportSale: { name: "EXPORT SALE" },
+                consultingRevenue: { name: "CONSULTING REVENUE", code: "4121" },
+                maintenanceRevenue: { name: "MAINTENANCE REVENUE", code: "4122" },
+                commissionIncome: { name: "COMMISSION INCOME", code: "4123" },
               },
             },
-            otherIncomes: {
-              name: "OTHER INCOMES",
+          },
+        },
+        otherIncome: {
+          name: "OTHER INCOME",
+          code: "4200",
+          children: {
+            financialIncome: {
+              name: "FINANCIAL INCOME",
+              code: "4210",
               children: {
-                otherIncome: {
-                  name: "OTHER INCOME",
-                  children: {
-                    rebateIncome: { name: "REBATE INCOME" },
-                    servicesIncome: { name: "SERVICES INCOME" },
-                    commissionIncome: { name: "COMMISSION INCOME" },
-                    investmentIncome: { name: "INVESTMENT INCOME" },
-                    purchaseDiscount: { name: "PURCHASE DISCOUNT" },
-                  },
-                },
+                interestIncome: { name: "INTEREST INCOME", code: "4211" },
+                dividendIncome: { name: "DIVIDEND INCOME", code: "4212" },
+                gainOnInvestments: { name: "GAIN ON INVESTMENTS", code: "4213" },
+              },
+            },
+            miscellaneousIncome: {
+              name: "MISCELLANEOUS INCOME",
+              code: "4220",
+              children: {
+                rentalIncome: { name: "RENTAL INCOME", code: "4221" },
+                gainOnAssetDisposal: { name: "GAIN ON ASSET DISPOSAL", code: "4222" },
+                foreignExchangeGain: { name: "FOREIGN EXCHANGE GAIN", code: "4223" },
+                otherMiscIncome: { name: "OTHER MISCELLANEOUS INCOME", code: "4224" },
               },
             },
           },
         },
       },
     },
-    expense: {
-      name: "EXPENSE",
+    costOfGoodsSold: {
+      name: "COST OF GOODS SOLD",
+      code: "5000",
       children: {
-        costOfGoodsSold: {
-          name: "COST OF GOODS SOLD",
+        directCosts: {
+          name: "DIRECT COSTS",
+          code: "5100",
           children: {
-            inventoryCost: {
-              name: "INVENTORY COST",
+            rawMaterialsCost: {
+              name: "RAW MATERIALS COST",
+              code: "5110",
               children: {
-                cgsFinishedMaterial: { name: "CGS - FINISHED MATERIAL" },
-                cgsRawMaterial: { name: "CGS - RAW MATERIAL" },
-                repairMaintExp: { name: "REPAIR & MAINT EXP (FACTORY)" },
-                servicesCost: { name: "SERVICES - COST" },
-                depreciationMachinery: { name: "DEPRECIATION OF MACHINERY" },
+                openingRawMaterials: { name: "OPENING RAW MATERIALS", code: "5111" },
+                purchasesRawMaterials: { name: "PURCHASES - RAW MATERIALS", code: "5112" },
+                closingRawMaterials: { name: "CLOSING RAW MATERIALS", code: "5113" },
               },
             },
-            conversionCost: {
-              name: "CONVERSION COST",
+            directLabor: {
+              name: "DIRECT LABOR",
+              code: "5120",
               children: {
-                cmtCharges: { name: "CMT CHARGES" },
-                processingOverhead: { name: "PROCESSING OVERHEAD" },
-                fohAppliedExp: { name: "FOH APPLIED EXP" },
+                wagesProduction: { name: "WAGES - PRODUCTION", code: "5121" },
+                overtimeProduction: { name: "OVERTIME - PRODUCTION", code: "5122" },
+                bonusesProduction: { name: "BONUSES - PRODUCTION", code: "5123" },
               },
             },
-          },
-        },
-        financialExpense: {
-          name: "FINANCIAL EXPENSE",
-          children: {
-            financialExpenses: {
-              name: "FINANCIAL EXPENSES",
+            directExpenses: {
+              name: "DIRECT EXPENSES",
+              code: "5130",
               children: {
-                whtaxExport: { name: "W.H TAX ON EXPORT" },
-                localBankCharges: { name: "LOCAL BANK CHARGES" },
-                foreignBankCharges: { name: "FOREIGN BANK CHARGES" },
-                whtaxLocal: { name: "W.H.TAX LOCAL" },
-                generalSalesTaxExp: { name: "GENERAL SALES TAX EXP" },
+                powerAndFuel: { name: "POWER AND FUEL", code: "5131" },
+                factorySupplies: { name: "FACTORY SUPPLIES", code: "5132" },
+                maintenanceFactory: { name: "MAINTENANCE - FACTORY", code: "5133" },
               },
             },
           },
         },
-        factoryOverHeads: {
-          name: "FACTORY OVER HEADS",
+        manufacturingOverheads: {
+          name: "MANUFACTURING OVERHEADS",
+          code: "5200",
           children: {
-            localFreight: { name: "LOCAL FREIGHT" },
-            discountOnSales: { name: "DISCOUNT ON SALES" },
-            factoryRent: { name: "FACTORY RENT" },
-            fuelCharges: { name: "FUEL CHARGES" },
-            gasExpenses: { name: "GAS EXPENSES" },
-            plumber: { name: "PLUMBER" },
-            electrician: { name: "ELECTRICIAN" },
+            indirectMaterials: { name: "INDIRECT MATERIALS", code: "5201" },
+            indirectLabor: { name: "INDIRECT LABOR", code: "5202" },
+            factoryRent: { name: "FACTORY RENT", code: "5203" },
+            factoryInsurance: { name: "FACTORY INSURANCE", code: "5204" },
+            depreciationFactory: { name: "DEPRECIATION - FACTORY", code: "5205" },
           },
         },
-        administrativeExpense: {
-          name: "ADMINISTRATIVE EXPENSE",
+      },
+    },
+    operatingExpenses: {
+      name: "OPERATING EXPENSES",
+      code: "6000",
+      children: {
+        sellingExpenses: {
+          name: "SELLING EXPENSES",
+          code: "6100",
           children: {
-            electricityExp: { name: "ELECTRICITY EXP" },
-            auditExpenses: { name: "AUDIT EXPENSES" },
-            salariesBenefitsExp: { name: "SALARIES & BENEFITS EXP" },
-            socialSecurity: { name: "SOCIAL SECURITY" },
-            eobi: { name: "EOBI" },
-            dailyWagesExp: { name: "DAILY WAGES EXP" },
-            postageTelephone: { name: "POSTAGE & TELEPHONE" },
-            printingStationeryExp: { name: "PRINTING & STATIONERY EXP" },
-            telephoneInternetExp: { name: "TELEPHONE & INTERNET EXP" },
+            advertisingExpenses: { name: "ADVERTISING EXPENSES", code: "6101" },
+            salesCommissions: { name: "SALES COMMISSIONS", code: "6102" },
+            deliveryExpenses: { name: "DELIVERY EXPENSES", code: "6103" },
+            salesPromotions: { name: "SALES PROMOTIONS", code: "6104" },
+            marketingExpenses: { name: "MARKETING EXPENSES", code: "6105" },
           },
         },
-        sellingExpense: {
-          name: "SELLING EXPENSE",
+        administrativeExpenses: {
+          name: "ADMINISTRATIVE EXPENSES",
+          code: "6200",
           children: {
-            freightCrriage: { name: "FREIGHT & CRRIAGE (LOCAL SALE)" },
-            loadingUnloading: { name: "LOADING & UNLOADING EXP" },
-            advertismentExpense: { name: "ADVERTISMENT EXPENSE" },
+            salariesAdmin: { name: "SALARIES - ADMINISTRATIVE", code: "6201" },
+            officeRent: { name: "OFFICE RENT", code: "6202" },
+            officeSupplies: { name: "OFFICE SUPPLIES", code: "6203" },
+            utilitiesOffice: { name: "UTILITIES - OFFICE", code: "6204" },
+            insuranceOffice: { name: "INSURANCE - OFFICE", code: "6205" },
+            depreciationOffice: { name: "DEPRECIATION - OFFICE", code: "6206" },
+            professionalFees: { name: "PROFESSIONAL FEES", code: "6207" },
+            auditFees: { name: "AUDIT FEES", code: "6208" },
+            legalFees: { name: "LEGAL FEES", code: "6209" },
+            bankCharges: { name: "BANK CHARGES", code: "6210" },
           },
         },
-        depreciationExpenses: {
-          name: "DEPRECIATION EXPENSES",
+      },
+    },
+    otherAccounts: {
+      name: "OTHER ACCOUNTS",
+      code: "7000",
+      children: {
+        financialExpenses: {
+          name: "FINANCIAL EXPENSES",
+          code: "7100",
           children: {
-            depreciationExpense: { name: "DEPRECIATION EXPENSE" },
+            interestExpense: { name: "INTEREST EXPENSE", code: "7101" },
+            bankChargesFinancial: { name: "BANK CHARGES - FINANCIAL", code: "7102" },
+            foreignExchangeLoss: { name: "FOREIGN EXCHANGE LOSS", code: "7103" },
+            lossOnInvestments: { name: "LOSS ON INVESTMENTS", code: "7104" },
           },
         },
-        gainLossAccount: {
-          name: "GAIN /LOSS ACCOUNT",
+        extraordinaryItems: {
+          name: "EXTRAORDINARY ITEMS",
+          code: "7200",
           children: {
-            gainLossAssetDisposal: { name: "GAIN / LOSS ON ASSET DISPOSAL" },
-            gainLossExchangeRate: { name: "GAIN / LOSS ON EXCHANGE RATE" },
+            extraordinaryIncome: { name: "EXTRAORDINARY INCOME", code: "7201" },
+            extraordinaryExpenses: { name: "EXTRAORDINARY EXPENSES", code: "7202" },
+            priorPeriodAdjustments: { name: "PRIOR PERIOD ADJUSTMENTS", code: "7203" },
           },
         },
-        landedCost: {
-          name: "LANDED COST",
+        taxExpenses: {
+          name: "TAX EXPENSES",
+          code: "7300",
           children: {
-            seaFreightExp: { name: "SEA FREIGHT EXP" },
-            customClearanceExp: { name: "CUSTOM CLEARANCE EXP" },
-            deliveryOrderExp: { name: "DELIVERY ORDER EXP" },
-            portCharges: { name: "PORT CHARGES" },
-            localTransportationCharges: { name: "LOCAL TRANSPORTATION CHARGES" },
-            otherExpenses: { name: "OTHER EXPENSES" },
-            demurrageCharges: { name: "DEMURRAGE CHARGES" },
+            currentTaxExpense: { name: "CURRENT TAX EXPENSE", code: "7301" },
+            deferredTaxExpense: { name: "DEFERRED TAX EXPENSE", code: "7302" },
+            penaltiesAndFines: { name: "PENALTIES AND FINES", code: "7303" },
           },
         },
       },
@@ -418,7 +522,9 @@ const AccountSidebar = () => {
       {renderTreeItem("liability", accountData.liability)}
       {renderTreeItem("equity", accountData.equity)}
       {renderTreeItem("revenue", accountData.revenue)}
-      {renderTreeItem("expense", accountData.expense)}
+      {renderTreeItem("costOfGoodsSold", accountData.costOfGoodsSold)}
+      {renderTreeItem("operatingExpenses", accountData.operatingExpenses)}
+      {renderTreeItem("otherAccounts", accountData.otherAccounts)}
     </div>
   )
 }
