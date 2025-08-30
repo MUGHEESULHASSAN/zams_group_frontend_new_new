@@ -10,10 +10,75 @@ const AddEditAccountModal = ({ account, onClose, onSave }) => {
     description: "",
     parentAccount: "",
     accountType: "",
+    subType: "", // Added subType field
     taxAccountType: "",
     isSummary: false,
     restrictedToSubsidiarie: "",
   })
+
+  const parentAccountMapping = {
+    "Cash and Bank": {
+      accountType: "Assets",
+      subType: "Bank",
+      codePrefix: "100101",
+    },
+    "Accounts Receivable": {
+      accountType: "Assets",
+      subType: "Current Assets",
+      codePrefix: "100102",
+    },
+    Inventory: {
+      accountType: "Assets",
+      subType: "Current Assets",
+      codePrefix: "100103",
+    },
+    "Fixed Assets": {
+      accountType: "Assets",
+      subType: "Non-Current Assets",
+      codePrefix: "100200",
+    },
+    "Accounts Payable": {
+      accountType: "Liabilities",
+      subType: "Current Liabilities",
+      codePrefix: "200101",
+    },
+    "Long Term Debt": {
+      accountType: "Liabilities",
+      subType: "Non-Current Liabilities",
+      codePrefix: "200200",
+    },
+    "Common Stock": {
+      accountType: "Equity",
+      subType: "Equity",
+      codePrefix: "300101",
+    },
+    "Retained Earnings": {
+      accountType: "Equity",
+      subType: "Equity",
+      codePrefix: "300102",
+    },
+    "Sales Revenue": {
+      accountType: "Revenue",
+      subType: "Operating Revenue",
+      codePrefix: "400101",
+    },
+    "Cost of Goods Sold": {
+      accountType: "Expenses",
+      subType: "Cost of Sales",
+      codePrefix: "500101",
+    },
+    "Operating Expenses": {
+      accountType: "Expenses",
+      subType: "Expenses",
+      codePrefix: "500200",
+    },
+  }
+
+  const generateAccountCode = (prefix) => {
+    // Generate a random 2-digit suffix for demo purposes
+    const suffix = Math.floor(Math.random() * 99) + 1
+    return `${prefix}${suffix.toString().padStart(2, "0")}`
+  }
 
   useEffect(() => {
     if (account) {
@@ -23,6 +88,7 @@ const AddEditAccountModal = ({ account, onClose, onSave }) => {
         description: account.description || "",
         parentAccount: account.parentAccount || "",
         accountType: account.accountType || "",
+        subType: account.subType || "", // Added subType
         taxAccountType: account.taxAccountType || "",
         isSummary: account.isSummary || false,
         restrictedToSubsidiarie: account.restrictedToSubsidiarie || "",
@@ -32,10 +98,22 @@ const AddEditAccountModal = ({ account, onClose, onSave }) => {
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }))
+
+    if (name === "parentAccount" && value && parentAccountMapping[value]) {
+      const mapping = parentAccountMapping[value]
+      setFormData((prev) => ({
+        ...prev,
+        [name]: type === "checkbox" ? checked : value,
+        accountType: mapping.accountType,
+        subType: mapping.subType,
+        accountNo: generateAccountCode(mapping.codePrefix),
+      }))
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: type === "checkbox" ? checked : value,
+      }))
+    }
   }
 
   const handleSubmit = (e) => {
@@ -56,12 +134,23 @@ const AddEditAccountModal = ({ account, onClose, onSave }) => {
         <form onSubmit={handleSubmit} className="account-form">
           <div className="form-row">
             <div className="form-group">
-              <label htmlFor="name">Name</label>
-              <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required />
-              <span className="required-text">Required</span>
+              <label htmlFor="name">
+                <span className="required-asterisk">*</span> Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                placeholder="Enter Name"
+                required
+              />
             </div>
             <div className="form-group">
-              <label htmlFor="accountNo">Account No</label>
+              <label htmlFor="accountNo">
+                <span className="required-asterisk">*</span> Account Code
+              </label>
               <input
                 type="text"
                 id="accountNo"
@@ -70,7 +159,76 @@ const AddEditAccountModal = ({ account, onClose, onSave }) => {
                 onChange={handleInputChange}
                 required
               />
-              <span className="required-text">Required</span>
+            </div>
+          </div>
+
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="parentAccount">
+                <span className="required-asterisk">*</span> Parent Account
+              </label>
+              <select
+                id="parentAccount"
+                name="parentAccount"
+                value={formData.parentAccount}
+                onChange={handleInputChange}
+              >
+                <option value="">Select Parent Account</option>
+                <option value="Cash and Bank">Cash and Bank</option>
+                <option value="Accounts Receivable">Accounts Receivable</option>
+                <option value="Inventory">Inventory</option>
+                <option value="Fixed Assets">Fixed Assets</option>
+                <option value="Accounts Payable">Accounts Payable</option>
+                <option value="Long Term Debt">Long Term Debt</option>
+                <option value="Common Stock">Common Stock</option>
+                <option value="Retained Earnings">Retained Earnings</option>
+                <option value="Sales Revenue">Sales Revenue</option>
+                <option value="Cost of Goods Sold">Cost of Goods Sold</option>
+                <option value="Operating Expenses">Operating Expenses</option>
+              </select>
+            </div>
+            <div className="form-group checkbox-group">
+              <label>Is Group</label>
+              <input type="checkbox" name="isSummary" checked={formData.isSummary} onChange={handleInputChange} />
+            </div>
+          </div>
+
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="accountType">
+                <span className="required-asterisk">*</span> Account Type
+              </label>
+              <select
+                id="accountType"
+                name="accountType"
+                value={formData.accountType}
+                onChange={handleInputChange}
+                required
+              >
+                <option value="">Select Account Type</option>
+                <option value="Assets">Assets</option>
+                <option value="Liabilities">Liabilities</option>
+                <option value="Equity">Equity</option>
+                <option value="Revenue">Revenue</option>
+                <option value="Expenses">Expenses</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <label htmlFor="subType">
+                <span className="required-asterisk">*</span> Sub Type
+              </label>
+              <select id="subType" name="subType" value={formData.subType} onChange={handleInputChange} required>
+                <option value="">Select Sub Type</option>
+                <option value="Current Assets">Current Assets</option>
+                <option value="Non-Current Assets">Non-Current Assets</option>
+                <option value="Bank">Bank</option>
+                <option value="Current Liabilities">Current Liabilities</option>
+                <option value="Non-Current Liabilities">Non-Current Liabilities</option>
+                <option value="Equity">Equity</option>
+                <option value="Operating Revenue">Operating Revenue</option>
+                <option value="Cost of Sales">Cost of Sales</option>
+                <option value="Expenses">Expenses</option>
+              </select>
             </div>
           </div>
 
@@ -95,22 +253,6 @@ const AddEditAccountModal = ({ account, onClose, onSave }) => {
 
           <div className="form-row">
             <div className="form-group">
-              <label htmlFor="parentAccount">Parent Account</label>
-              <select
-                id="parentAccount"
-                name="parentAccount"
-                value={formData.parentAccount}
-                onChange={handleInputChange}
-              >
-                <option value="">Select Parent Account</option>
-                <option value="asset">ASSET</option>
-                <option value="liability">LIABILITY</option>
-                <option value="equity">STOCKHOLDER EQUITY</option>
-                <option value="revenue">REVENUE</option>
-                <option value="expense">EXPENSE</option>
-              </select>
-            </div>
-            <div className="form-group">
               <label htmlFor="taxAccountType">Tax Account Type</label>
               <select
                 id="taxAccountType"
@@ -122,27 +264,6 @@ const AddEditAccountModal = ({ account, onClose, onSave }) => {
                 <option value="taxable">Taxable</option>
                 <option value="non-taxable">Non-Taxable</option>
               </select>
-            </div>
-          </div>
-
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="accountType">Account Type</label>
-              <select
-                id="accountType"
-                name="accountType"
-                value={formData.accountType}
-                onChange={handleInputChange}
-                required
-              >
-                <option value="">Select Account Type</option>
-                <option value="asset">Asset</option>
-                <option value="liability">Liability</option>
-                <option value="equity">Equity</option>
-                <option value="revenue">Revenue</option>
-                <option value="expense">Expense</option>
-              </select>
-              <span className="required-text">Required</span>
             </div>
           </div>
 
@@ -168,7 +289,7 @@ const AddEditAccountModal = ({ account, onClose, onSave }) => {
               ← Back
             </button>
             <button type="submit" className="btn-create">
-              <span className="create-icon">📄</span>
+              <span className="create-icon">+</span>
               Create
             </button>
           </div>
