@@ -4,7 +4,7 @@
   border-radius: 12px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   overflow: scroll;
-  height:fit-content;
+  height: fit-content;
 }
 
 .account-table {
@@ -116,7 +116,130 @@
   font-weight: 500;
 }
 
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.checkbox {
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+  cursor: pointer;
+  transform: scale(1.1);
+  accent-color: #4f46e5;
+}
+
+.badge {
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  display: inline-block;
+}
+
+.badge-yes {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.badge-no {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.entries-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.entries-label {
+  font-size: 14px;
+  color: #374151;
+}
+
+.entries-select {
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 14px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.entries-select:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.page-info {
+  font-size: 14px;
+  color: #374151;
+}
+
+.pagination-buttons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pagination-btn {
+  padding: 4px 8px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background-color: #f9fafb;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-input-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-input-label {
+  font-size: 14px;
+  color: #374151;
+}
+
+.page-input {
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 4px 8px;
+  width: 64px;
+  font-size: 14px;
+  text-align: center;
+  background-color: white;
+}
+
+.page-input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
 .table-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 20px;
   border-top: 1px solid #e5e7eb;
   background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);

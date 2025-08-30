@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import AccountSidebar from "./AccountSidebar.jsx"
 import AccountTable from "./AccountTable.jsx"
 import AddEditAccountModal from "./AddEditAccountModal.jsx"
 import "./ChartOfAccounts.css"
@@ -32,35 +31,48 @@ const ChartOfAccounts = () => {
   }
 
   return (
-    <div className="chart-of-accounts">
-      <div className="main-content">
-        {/* Sidebar */}
-        <AccountSidebar />
+    <div className="chart-container">
+      <div className="chart-wrapper">
+        {/* Header Section */}
+        <div className="header-section">
+          <h1 className="page-title">Account Details</h1>
 
-        {/* Content Area */}
-        <div className="content-area">
-          <div className="content-header">
-            <h1 className="page-title">Control Accounts</h1>
-          </div>
-          <hr className="divider" />
-          <div className="search-section">
-            <div className="search-container">
-              <span className="search-icon">🔍</span>
+          {/* Action Bar */}
+          <div className="action-bar">
+            <div className="action-buttons">
+              <button onClick={handleAddAccount} className="btn-primary">
+                <span className="plus-icon">+</span>
+                Create Account
+              </button>
+              <button className="btn-secondary">
+                <span>↑</span>
+                Import
+              </button>
+              <button className="btn-secondary">
+                <span>↓</span>
+                Export
+              </button>
+            </div>
+
+            <div className="action-controls">
               <input
                 type="text"
-                placeholder="Search: All Text Columns"
+                placeholder="Search by Name"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="search-input"
               />
+              <button className="btn-secondary">
+                <span>⚙</span>
+                Filters
+              </button>
+              <button className="btn-icon">☰</button>
             </div>
-             <button className="btn-add-account" onClick={handleAddAccount}>
-              + Add Account
-            </button>
           </div>
-
-          <AccountTable searchTerm={searchTerm} onEditAccount={handleEditAccount} onAddAccount={handleAddAccount} />
         </div>
+
+        {/* Table Section */}
+        <AccountTable searchTerm={searchTerm} onEditAccount={handleEditAccount} onAddAccount={handleAddAccount} />
       </div>
 
       {/* Modal */}

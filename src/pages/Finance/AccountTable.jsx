@@ -1,138 +1,233 @@
 "use client"
 
+import { useState } from "react"
 import "./AccountTable.css"
 
 const AccountTable = ({ searchTerm, onEditAccount, onAddAccount }) => {
+  const [currentPage, setCurrentPage] = useState(1)
+  const [entriesPerPage, setEntriesPerPage] = useState(10)
+
+  // Sample data matching the image structure
   const accounts = [
     {
-      id: 1,
-      name: "ASSET",
-      accountNumber: "10",
-      typeName: "ASSETS",
-      isSummary: true,
-      parentName: "",
-      level: 1,
+      code: "200101",
+      name: "Accounts Payable",
+      parent: "Current Liabilities",
+      type: "Liabilities",
+      subType: "Current Liabilities",
+      createdDate: "1/1/1970",
+      isGroup: false,
+      company: "J Khanz Enterprises",
     },
     {
-      id: 2,
-      name: "CURRENT ASSET",
-      accountNumber: "1001",
-      typeName: "CURRENT ASSET",
-      isSummary: true,
-      parentName: "10 - ASSET",
-      level: 2,
+      code: "100102",
+      name: "Accounts Receivable",
+      parent: "Current Assets",
+      type: "Assets",
+      subType: "Current Assets",
+      createdDate: "1/1/1970",
+      isGroup: false,
+      company: "J Khanz Enterprises",
     },
     {
-      id: 3,
-      name: "ACCOUNTS RECEIVABLE",
-      accountNumber: "100101",
-      typeName: "ACCOUNTS RECEIVABLE",
-      isSummary: true,
-      parentName: "1001 - CURRENT ASSET",
-      level: 3,
+      code: "100202",
+      name: "Accumulated Depreciation",
+      parent: "Non-Current Assets",
+      type: "Assets",
+      subType: "Non-Current Assets",
+      createdDate: "1/1/1970",
+      isGroup: false,
+      company: "J Khanz Enterprises",
     },
     {
-      id: 4,
-      name: "INTER COMPANY ASSET",
-      accountNumber: "10010101",
-      typeName: "ACCOUNTS RECEIVABLE",
-      isSummary: false,
-      parentName: "100101 - ACCOUNTS RECEIVABLE",
-      level: 4,
+      code: "3003",
+      name: "Additional Paid-in Capital",
+      parent: "Equity",
+      type: "Equity",
+      subType: "Equity",
+      createdDate: "1/1/1970",
+      isGroup: false,
+      company: "J Khanz Enterprises",
     },
     {
-      id: 5,
-      name: "ACCOUNT RECEIVABLE",
-      accountNumber: "10010102",
-      typeName: "ACCOUNTS RECEIVABLE",
-      isSummary: false,
-      parentName: "100101 - ACCOUNTS RECEIVABLE",
-      level: 4,
+      code: "500205",
+      name: "Amortization Expense",
+      parent: "Operating Expenses",
+      type: "Expenses",
+      subType: "Expenses",
+      createdDate: "1/1/1970",
+      isGroup: false,
+      company: "J Khanz Enterprises",
     },
     {
-      id: 6,
-      name: "CASH & BANK",
-      accountNumber: "100102",
-      typeName: "CASH & BANK",
-      isSummary: true,
-      parentName: "1001 - CURRENT ASSET",
-      level: 3,
+      code: "10",
+      name: "Assets",
+      parent: "",
+      type: "Assets",
+      subType: "Assets",
+      createdDate: "1/1/1970",
+      isGroup: true,
+      company: "J Khanz Enterprises",
     },
     {
-      id: 7,
-      name: "CASH IN HAND",
-      accountNumber: "10010201",
-      typeName: "CASH & BANK",
-      isSummary: true,
-      parentName: "100102 - CASH & BANK",
-      level: 4,
+      code: "100101",
+      name: "Cash and Bank",
+      parent: "Current Assets",
+      type: "Assets",
+      subType: "Bank",
+      createdDate: "1/1/1970",
+      isGroup: true,
+      company: "J Khanz Enterprises",
     },
     {
-      id: 8,
-      name: "LIABILITY",
-      accountNumber: "2001",
-      typeName: "CURRENT LIABILITY",
-      isSummary: true,
-      parentName: "",
-      level: 1,
+      code: "10010101",
+      name: "Cash in Hand",
+      parent: "Cash and Bank",
+      type: "Assets",
+      subType: "Bank",
+      createdDate: "1/1/1970",
+      isGroup: false,
+      company: "J Khanz Enterprises",
     },
     {
-      id: 9,
-      name: "TAX PAYABLES",
-      accountNumber: "200107",
-      typeName: "CURRENT LIABILITY",
-      isSummary: true,
-      parentName: "2001 - CURRENT LIABILITY",
-      level: 3,
+      code: "3001",
+      name: "Common Stock",
+      parent: "Equity",
+      type: "Equity",
+      subType: "Equity",
+      createdDate: "1/1/1970",
+      isGroup: false,
+      company: "J Khanz Enterprises",
     },
     {
-      id: 10,
-      name: "FURTHER TAX PAYABLE",
-      accountNumber: "20010702",
-      typeName: "CURRENT LIABILITY",
-      isSummary: false,
-      parentName: "200107 - TAX PAYABLES",
-      level: 4,
+      code: "5001",
+      name: "Cost of Goods Sold (COGS)",
+      parent: "Expenses",
+      type: "Expenses",
+      subType: "Cost of Sales",
+      createdDate: "1/1/1970",
+      isGroup: true,
+      company: "J Khanz Enterprises",
     },
   ]
 
-  const filteredAccounts = accounts.filter((account) => account.name.toLowerCase().includes(searchTerm.toLowerCase()))
+  // Filter accounts based on search term
+  const filteredAccounts = accounts.filter(
+    (account) => account.name.toLowerCase().includes(searchTerm.toLowerCase()) || account.code.includes(searchTerm),
+  )
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredAccounts.length / entriesPerPage)
+  const startIndex = (currentPage - 1) * entriesPerPage
+  const endIndex = startIndex + entriesPerPage
+  const currentAccounts = filteredAccounts.slice(startIndex, endIndex)
 
   return (
     <div className="account-table-container">
-      <table className="account-table">
-        <thead>
-          <tr>
-            <th>Account Name</th>
-            <th>Account Number</th>
-            <th>Type Name</th>
-            <th>Is Summary</th>
-            <th>Parent Name</th>
-            <th>Levels</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredAccounts.map((account) => (
-            <tr key={account.id}>
-              <td>
-                <div className="account-row">
-                  <button className="edit-btn" onClick={() => onEditAccount(account)}>
-                    ✏️
-                  </button>
-                  <span className="account-name">{account.name}</span>
-                </div>
-              </td>
-              <td>{account.accountNumber}</td>
-              <td>{account.typeName}</td>
-              <td>
-                <input type="checkbox" checked={account.isSummary} readOnly className="summary-checkbox" />
-              </td>
-              <td>{account.parentName}</td>
-              <td>{account.level}</td>
+      <div className="table-wrapper">
+        <table className="account-table">
+          <thead>
+            <tr>
+              <th>
+                <input type="checkbox" className="checkbox" />
+              </th>
+              <th>Account Code ↕</th>
+              <th>Account Name</th>
+              <th>Parent Account</th>
+              <th>Account Type</th>
+              <th>Sub Type</th>
+              <th>Created Date</th>
+              <th>Is Group</th>
+              <th>Company</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {currentAccounts.map((account, index) => (
+              <tr key={account.code}>
+                <td>
+                  <input type="checkbox" className="checkbox" />
+                </td>
+                <td>{account.code}</td>
+                <td>{account.name}</td>
+                <td>{account.parent}</td>
+                <td>{account.type}</td>
+                <td>{account.subType}</td>
+                <td>{account.createdDate}</td>
+                <td>
+                  <span className={`badge ${account.isGroup ? "badge-yes" : "badge-no"}`}>
+                    {account.isGroup ? "Yes" : "No"}
+                  </span>
+                </td>
+                <td>{account.company}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="table-actions">
+        <div className="entries-control">
+          <span className="entries-label">Show</span>
+          <select
+            value={entriesPerPage}
+            onChange={(e) => setEntriesPerPage(Number(e.target.value))}
+            className="entries-select"
+          >
+            <option value={10}>10</option>
+            <option value={25}>25</option>
+            <option value={50}>50</option>
+          </select>
+          <span className="entries-label">Entries</span>
+        </div>
+
+        <div className="pagination-controls">
+          <span className="page-info">
+            Page {currentPage} of {totalPages}
+          </span>
+
+          <div className="pagination-buttons">
+            <button onClick={() => setCurrentPage(1)} disabled={currentPage === 1} className="pagination-btn">
+              ≪
+            </button>
+            <button
+              onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+              disabled={currentPage === 1}
+              className="pagination-btn"
+            >
+              ‹
+            </button>
+            <button
+              onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+              disabled={currentPage === totalPages}
+              className="pagination-btn"
+            >
+              ›
+            </button>
+            <button
+              onClick={() => setCurrentPage(totalPages)}
+              disabled={currentPage === totalPages}
+              className="pagination-btn"
+            >
+              ≫
+            </button>
+          </div>
+
+          <div className="page-input-control">
+            <span className="page-input-label">Go to Page:</span>
+            <input
+              type="number"
+              min="1"
+              max={totalPages}
+              value={currentPage}
+              onChange={(e) => {
+                const page = Math.max(1, Math.min(totalPages, Number(e.target.value)))
+                setCurrentPage(page)
+              }}
+              className="page-input"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
