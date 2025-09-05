@@ -1,0 +1,82 @@
+/* CreateSaleInvoice.css */
+
+.create-invoice-page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h2, h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form-grid label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.form-grid input, 
+textarea {
+  padding: 6px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.invoice-lines {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+.invoice-lines th, 
+.invoice-lines td {
+  border: 1px solid #ddd;
+  padding: 6px 8px;
+  text-align: center;
+}
+
+.invoice-lines th {
+  background: #f1f1f1;
+}
+
+.add-line {
+  margin: 10px 0;
+  background: #17a2b8;
+}
+
+.add-line:hover {
+  background: #138496;
+}
+
+textarea {
+  width: 100%;
+  min-height: 80px;
+}
+
+.totals {
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.form-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.submit-btn {
+  background: #28a745;
+}
+
+.submit-btn:hover {
+  background: #218838;
+}

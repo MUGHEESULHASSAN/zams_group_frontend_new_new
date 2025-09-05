@@ -11,6 +11,14 @@ import "../../pages/Inventory/Settings/UnitTypeManagement"
 import "../../pages/Sales/CustomerCategoryManagement"
 import "../../pages/Sales/SalesReports"
 import "../../pages/Purchasing/PurchasingReports"
+import "../../pages/Sales/SalesInvoice"
+import "../../pages/Sales/CreateSaleInvoice"
+import "../../pages/Sales/SalesReturn"
+import "../../pages/Sales/SalesDelivery"
+import "../../pages/Finance/BankCashPaymentVoucher"
+import "../../pages/Finance/BankCashReceiptVoucher"
+import "../../pages/Finance/AccountingPeriod"
+import "../../pages/Finance/FixedAssetRegister"
 import path from "path"
 
 
@@ -34,6 +42,9 @@ const Sidebar = ({ isOpen }) => {
       key: "sales",
       submenu: [
         { path: "/sales", label: "Sale Orders" },
+        { path: "/sales-delivery", label: "Sale Delivery" },
+        { path: "/sales-invoice", label: "Sale Invoice" },
+        { path: "/sales-return", label: "Sale Return" },
         { path: "/customers", label: "Customers" },
         { path: "/CustomerCategoryManagement", label: "Customers Category" },
         { path: "/opportunities", label: "Opportunities" },
@@ -60,6 +71,9 @@ const Sidebar = ({ isOpen }) => {
       key: "purchasing",
       submenu: [
         { path: "/purchasing", label: "Purchase Orders" },
+        { path: "/goods-received-notes", label: "Goods Received Notes" },
+        { path: "/purchase_invoice", label: "Purchase Invoice" },
+        { path: "/purchase_return", label: "Purchase Return" },
         { path: "/vendors", label: "Vendors" },
         { path: "/receipts", label: "Receipts" },
         { path: "/vendor-category", label: "Vendor Category" },
@@ -85,6 +99,10 @@ const Sidebar = ({ isOpen }) => {
         { path: "/invoices", label: "Invoices" },
         { path: "/expense-entry", label: "Expense Entry" },
         { path: "/journal-entry", label: "Journal Entry" },
+        { path: "/bank-cash-payment-voucher", label: "Bank / Cash Payment Voucher" },
+        { path: "/bank-cash-receipt-voucher", label: "Bank / Cash Receipt Voucher" },
+        { path: "/accounting-period", label: "Accounting Period" },
+        { path: "/fixed-asset-register", label: "Fixed Asset Register" },
         { path: "/finance-reports", label: "Finance Reports" }
       ],
     },

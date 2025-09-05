@@ -1,0 +1,75 @@
+/* PurchaseInvoice.css */
+
+.purchase-invoice-page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.create-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.filter-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.filter-container {
+  position: relative;
+}
+
+.filter-dropdown {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.filter-dropdown label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.table-container {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.table-container table {
+  border-collapse: collapse;
+  min-width: 1000px; /* forces horizontal scroll */
+  width: 100%;
+}
+
+.table-container th,
+.table-container td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.table-container th {
+  background-color: #f4f4f4;
+}

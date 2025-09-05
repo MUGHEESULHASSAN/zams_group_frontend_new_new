@@ -1,0 +1,15 @@
+level 4 addition
+
+remove subsidery ,account type and tax , is group ,is summary
+
+remove is group from table
+
+code
+
+next pages development
+
+
+bank/cash recepit voucher
+bank/cash payment voucher
+accounting periods
+fixed asset module

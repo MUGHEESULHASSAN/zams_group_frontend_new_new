@@ -165,7 +165,7 @@ const AddEditAccountModal = ({ account, onClose, onSave }) => {
           <div className="form-row">
             <div className="form-group">
               <label htmlFor="parentAccount">
-                <span className="required-asterisk">*</span> Parent Account
+                <span className="required-asterisk">*</span> Parent Account - Level 2
               </label>
               <select
                 id="parentAccount"
@@ -196,7 +196,7 @@ const AddEditAccountModal = ({ account, onClose, onSave }) => {
           <div className="form-row">
             <div className="form-group">
               <label htmlFor="accountType">
-                <span className="required-asterisk">*</span> Account Type
+                <span className="required-asterisk">*</span> Account Type - Level 1
               </label>
               <select
                 id="accountType"
@@ -215,7 +215,7 @@ const AddEditAccountModal = ({ account, onClose, onSave }) => {
             </div>
             <div className="form-group">
               <label htmlFor="subType">
-                <span className="required-asterisk">*</span> Sub Type
+                <span className="required-asterisk">*</span> Sub Type - Level 3
               </label>
               <select id="subType" name="subType" value={formData.subType} onChange={handleInputChange} required>
                 <option value="">Select Sub Type</option>

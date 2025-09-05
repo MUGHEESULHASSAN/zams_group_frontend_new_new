@@ -44,7 +44,25 @@ import PurchaseOrderByMonth from "./pages/Purchasing/PurchaseOrderByMonth"
 import ExpensEntry from "./pages/Finance/ExpenseEntry"
 import JournalEntry from "./pages/Finance/JournalEntry"
 import FinanceReports from "./pages/Finance/Reports"
-
+import SalesInvoice from "./pages/Sales/SalesInvoice"
+import CreateSaleInvoice from "./pages/Sales/CreateSaleInvoice"
+import SalesReturn from "./pages/Sales/SalesReturn"
+import SalesDelivery from "./pages/Sales/SalesDelivery"
+import CreateDeliveryChallan from "./pages/Sales/CreateDeliveryChallan"
+import PurchaseInvoice from "./pages/Purchasing/PurchaseInvoice"
+import CreatePurchaseInvoice from "./pages/Purchasing/CreatePurchaseInvoice"
+import PurchaseReturn from "./pages/Purchasing/PurchaseReturn"
+import CreatePurchaseReturn from "./pages/Purchasing/CreatePurchaseReturn"
+import GoodsReceivedNotes from "./pages/Purchasing/GoodsReceivedNotes"
+import CreateGRN from "./pages/Purchasing/CreateGRN"
+import BankCashPaymentVoucher from "./pages/Finance/BankCashPaymentVoucher"
+import CreateBankCashPaymentVoucher from "./pages/Finance/CreateBankCashPaymentVoucher"
+import BankCashReceiptVoucher from "./pages/Finance/BankCashReceiptVoucher"
+import CreateBankCashReceiptVoucher from "./pages/Finance/CreateBankCashReceiptVoucher"
+import AccountingPeriod from "./pages/Finance/AccountingPeriod"
+import CreateAccountingPeriod from "./pages/Finance/CreateAccountingPeriod"
+import FixedAssetRegister from "./pages/Finance/FixedAssetRegister"
+import CreateFixedAsset from "./pages/Finance/CreateFixedAsset"
 
 
 import "./App.css"
@@ -107,6 +125,29 @@ function App() {
                     <Route path="/purchase-order-by-customer" element={<PurchaseOrderByCustomer />} />
                     <Route path="/purchase-order-by-items" element={<PurchaseOrderByItems />} />
                     <Route path="/purchase-order-by-month" element={<PurchaseOrderByMonth />} />
+                    <Route path="/sales-invoice" element={<SalesInvoice />} />
+                    <Route path="/create-sales-invoice" element={<CreateSaleInvoice />} />
+                    <Route path="/sales-return" element={<SalesReturn />} />
+                    <Route path="/sales-delivery" element={<SalesDelivery />} />
+                    <Route path="/create-delivery-challan" element={<CreateDeliveryChallan />} />
+                    <Route path="/purchase_invoice" element={<PurchaseInvoice />} />
+                    <Route path="/create-purchase-invoice" element={<CreatePurchaseInvoice />} />
+                    <Route path="/purchase_return" element={<PurchaseReturn />} />
+                    <Route path="/create-purchase-return" element={<CreatePurchaseReturn />} />
+                    <Route path="/goods-received-notes" element={<GoodsReceivedNotes />} />
+                    <Route path="/create-goods-received-note" element={<CreateGRN />} />
+                    <Route path="/bank-cash-payment-voucher" element={<BankCashPaymentVoucher />} />
+                    <Route path="/create-bank-cash-payment-voucher" element={<CreateBankCashPaymentVoucher />} />
+                    <Route path="/bank-cash-receipt-voucher" element={<BankCashReceiptVoucher />} />
+                    <Route path="/create-bank-cash-receipt-voucher" element={<CreateBankCashReceiptVoucher />} />
+                    <Route path="/accounting-period" element={<AccountingPeriod />} />
+                    <Route path="/create-accounting-period" element={<CreateAccountingPeriod />} />
+                    <Route path="/fixed-asset-register" element={<FixedAssetRegister />} />
+                    <Route path="/create-fixed-asset" element={<CreateFixedAsset />} />
+
+
+
+
 
                     {/* Add other routes as needed */}
                   </Routes>

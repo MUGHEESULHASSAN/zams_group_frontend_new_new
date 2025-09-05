@@ -1,0 +1,100 @@
+.bcrv-page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.btn {
+  background: #007bff;
+  color: #fff;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #0056b3;
+}
+
+.create-btn {
+  background: #28a745;
+}
+
+.create-btn:hover {
+  background: #218838;
+}
+
+.filter-container {
+  position: relative;
+}
+
+.filter-btn {
+  background: #6c757d;
+}
+
+.filter-btn:hover {
+  background: #5a6268;
+}
+
+.filter-dropdown {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.filter-dropdown label {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.bcrv-table {
+  width: 100%;
+  min-width: 1000px;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.bcrv-table th,
+.bcrv-table td {
+  border: 1px solid #ddd;
+  padding: 8px 10px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.bcrv-table th {
+  background: #f8f9fa;
+}
+
+.small-btn {
+  padding: 4px 8px;
+  font-size: 14px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  background: #f1f1f1;
+}
+
+.small-btn:hover {
+  background: #ddd;
+}

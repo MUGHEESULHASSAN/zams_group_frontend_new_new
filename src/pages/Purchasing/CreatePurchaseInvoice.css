@@ -1,0 +1,112 @@
+/* CreatePurchaseInvoice.css */
+
+.create-invoice-page {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.create-invoice-page h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form-grid label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #333;
+}
+
+.form-grid input,
+.form-grid textarea,
+.form-grid select {
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.invoice-lines {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+.invoice-lines th,
+.invoice-lines td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.invoice-lines th {
+  background: #f4f4f4;
+}
+
+.invoice-lines input {
+  width: 100%;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  margin: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #0056b3;
+}
+
+.add-line {
+  background: #28a745;
+}
+
+.add-line:hover {
+  background: #1e7e34;
+}
+
+.form-actions {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.submit-btn {
+  background: #17a2b8;
+}
+
+.submit-btn:hover {
+  background: #117a8b;
+}
+
+.totals {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #333;
+}
+
+textarea {
+  width: 100%;
+  min-height: 80px;
+  resize: vertical;
+}
