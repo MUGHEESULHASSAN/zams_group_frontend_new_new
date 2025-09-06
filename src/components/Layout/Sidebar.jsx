@@ -19,6 +19,11 @@ import "../../pages/Finance/BankCashPaymentVoucher"
 import "../../pages/Finance/BankCashReceiptVoucher"
 import "../../pages/Finance/AccountingPeriod"
 import "../../pages/Finance/FixedAssetRegister"
+import "../../pages/Application_Setup/Classifications"
+import "../../pages/Application_Setup/CompanySetup"
+import "../../pages/Application_Setup/ManageRoles"
+import "../../pages/Application_Setup/ManageUsers"
+import "../../pages/Application_Setup/SetupTaxes"
 import path from "path"
 
 
@@ -105,6 +110,17 @@ const Sidebar = ({ isOpen }) => {
         { path: "/fixed-asset-register", label: "Fixed Asset Register" },
         { path: "/finance-reports", label: "Finance Reports" }
       ],
+    },
+    { label: "Application Setup",
+      icon: "🛠️",
+      key: "app-setup",
+      submenu: [
+        { path: "/classifications", label: "Classifications" },
+        { path: "/company-setup", label: "Company Setup" },
+        { path: "/manage-roles", label: "Manage Roles" },
+        { path: "/manage-users", label: "Manage Users" },
+        { path: "/setup-taxes", label: "Setup Taxes" }
+      ]
     },
     { path: "/reports", label: "Reports", icon: "📊" },
     { path: "/calendar", label: "Calendar", icon: "📅" },

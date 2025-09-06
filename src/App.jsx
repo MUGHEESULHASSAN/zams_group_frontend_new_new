@@ -63,7 +63,11 @@ import AccountingPeriod from "./pages/Finance/AccountingPeriod"
 import CreateAccountingPeriod from "./pages/Finance/CreateAccountingPeriod"
 import FixedAssetRegister from "./pages/Finance/FixedAssetRegister"
 import CreateFixedAsset from "./pages/Finance/CreateFixedAsset"
-
+import CompanySetup from "./pages/Application_Setup/CompanySetup"
+import Classifications from "./pages/Application_Setup/Classifications" 
+import ManageRoles from "./pages/Application_Setup/ManageRoles"
+import ManageUsers from "./pages/Application_Setup/ManageUsers"
+import SetupTaxes from "./pages/Application_Setup/SetupTaxes"
 
 import "./App.css"
 
@@ -144,8 +148,11 @@ function App() {
                     <Route path="/create-accounting-period" element={<CreateAccountingPeriod />} />
                     <Route path="/fixed-asset-register" element={<FixedAssetRegister />} />
                     <Route path="/create-fixed-asset" element={<CreateFixedAsset />} />
-
-
+                    <Route path="/company-setup" element={<CompanySetup />} />
+                    <Route path="/classifications" element={<Classifications />} />
+                    <Route path="/manage-roles" element={<ManageRoles />} />
+                    <Route path="/manage-users" element={<ManageUsers />} />
+                    <Route path="/setup-taxes" element={<SetupTaxes />} />
 
 
 
